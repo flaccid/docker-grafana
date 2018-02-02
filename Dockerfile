@@ -24,7 +24,7 @@ ENV PROMETHEUS_ACCESS_MODE=proxy
 ENV PROMETHEUS_URL=http://prometheus:9090/
 
 COPY conf /usr/share/grafana/conf
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY docker-entrypoint.sh /opt/grafana/bin/docker-entrypoint.sh
 
 COPY --from=builder /usr/src/grafana/bin/grafana-cli    /opt/grafana/bin/grafana-cli
 COPY --from=builder /usr/src/grafana/bin/grafana-server /opt/grafana/bin/grafana-server
@@ -36,6 +36,6 @@ VOLUME /opt/grafana/data
 
 WORKDIR /opt/grafana
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["bin/docker-entrypoint.sh"]
 
 CMD ["bin/grafana-server"]

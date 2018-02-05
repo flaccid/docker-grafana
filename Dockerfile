@@ -31,9 +31,6 @@ COPY --from=builder /usr/src/grafana/bin/grafana-server /opt/grafana/bin/grafana
 COPY --from=builder /usr/src/grafana/conf               /opt/grafana/conf
 COPY --from=builder /usr/src/grafana/public             /opt/grafana/public
 
-VOLUME /opt/grafana/conf
-VOLUME /opt/grafana/data
-
 WORKDIR /opt/grafana
 
 ENTRYPOINT ["bin/docker-entrypoint.sh"]
